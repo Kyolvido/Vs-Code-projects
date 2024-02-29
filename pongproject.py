@@ -1,6 +1,8 @@
 """Weber State University - CS 1400 (Adamic): Programming I -- Midterm Project
 Python implementation of the classic game Pong.
 
+Pong Midterm Program Modified by: Karlyoung Olvidomartinez, 2/28/2024
+
 This is a template for the implementation of the game Pong. You should
 implement the game logic in this file.
 """
