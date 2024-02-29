@@ -39,8 +39,8 @@ right_scorerange = (800,600)
 # X_cord = ball[0]
 # Y_cord = ball[1]
 # ball_start = ball
-ball_directionx = 2 
-ball_directiony = 2 
+ball_directionx = 2
+ball_directiony = 2
 
 
 
@@ -55,12 +55,12 @@ def paddle_check():
         player1[1] = 0
     elif player1[1] > 500:
         player1[1] = 500
-      
+
     if player2[1] < 0:
         player2[1] = 0
     elif player2[1] > 500:
         player2[1] = 500
-       
+
 def ball_check():
     """Checks if the ball his hitting the upper and lower walls then reverses the y direction.
     """
@@ -70,13 +70,14 @@ def ball_check():
     elif ball [1] > 580:
         ball_directiony = -ball_directiony
 
-#need a function to start ball at default speed and return if player scores reset and randomize direction
+#need a function to start ball at default speed and return
+# if player scores reset and randomize direction
 
 def ball_movement_base():
     """Assigns the balls x and y with a speed defined by a variable and value
     """
     ball[0] += ball_directionx
-    ball[1] += ball_directiony  
+    ball[1] += ball_directiony
 
 def ball_meets_paddle():
     """This checks if the ball is colliding with each paddle.
@@ -87,37 +88,39 @@ def ball_meets_paddle():
     # pylint: disable=global-statement
     global ball_directionx
     player1_xpaddle = player1[0] + PADDLE_WIDTH
-    player1_ypaddle = player1[1] + PADDLE_HEIGHT 
-   
+    player1_ypaddle = player1[1] + PADDLE_HEIGHT
+
     if ball[0] < player1_xpaddle and player1[1] < ball[1] + BALL_HEIGHT <= player1_ypaddle:
         ball_directionx = -ball_directionx
-    elif ball[0] + BALL_WIDTH > player2[0] and player2[1] < ball[1] + BALL_HEIGHT <= player2[1] + PADDLE_HEIGHT:
+    elif (ball[0] + BALL_WIDTH > player2[0] and
+          player2[1] < ball[1] + BALL_HEIGHT <= player2[1] + PADDLE_HEIGHT):
         ball_directionx = -ball_directionx
-    
+
 # pylint: enable=invalid-name
 # Required Functions.
 def get_scores():
-    """ Gets players score if ball passes the left or right range and updates either score then resets
+    """ Gets players score if ball passes the left or right range and updates
+    either score then resets
     the ball to origin and flips direction
     """
     global ball_directionx,player1_score, player2_score
     #tells python we are looking at these scores as global not local
-  
+
     # for x,y in enumerate(ball):
     if left_scorerange[0] >= ball[0]:
         player2_score += 1
-        ball[0] = 390  
-        ball[1] = 300
-        ball_directionx  = -ball_directionx
-        
-    
-    if right_scorerange[0] <= ball[0] + BALL_WIDTH:
-        player1_score += 1
-        ball[0] = 390  
+        ball[0] = 390
         ball[1] = 300
         ball_directionx  = -ball_directionx
 
-        #im thinking if the ball passes within the range on left or right the player score will update depending what side it passes
+    if right_scorerange[0] <= ball[0] + BALL_WIDTH:
+        player1_score += 1
+        ball[0] = 390
+        ball[1] = 300
+        ball_directionx  = -ball_directionx
+
+      #im thinking if the ball passes within the range on left or right the player score will
+       # update depending what side it passes
 
     return (player1_score, player2_score)
 
@@ -140,25 +143,24 @@ def process_input():
 
     # Get a dictionary of all user inputs.
     user_inputs = pygame.key.get_pressed()
-    
+
     #calls to pygame.get
     pygame.event.get(user_inputs)
-        
+
     # Use the dictionary of user inputs, to update the player positions.
-    
+
     if user_inputs[USER1_UP]:
         player1[1] -= 5
     elif  user_inputs[USER1_DOWN]:
         player1[1] += 5
-        
+
     if user_inputs[USER2_UP]:
         player2[1] -= 5
     elif user_inputs[USER2_DOWN]:
         player2[1] += 5
-       
+
 
 def update():
-    
     """Update the positions of the game objects for the next frame.
 
     TODO: UPDATE THIS DOCSTRING BASED ON YOUR IMPLEMENTATION.
@@ -172,7 +174,7 @@ def update():
     """
      #checks and stops paddle movement
     paddle_check()
-  
+
     #move ball function
     ball_movement_base()
 
@@ -181,7 +183,7 @@ def update():
 
     ball_meets_paddle()
 
-    return # DELETE THIS LINE WHEN YOU IMPLEMENT THE FUNCTION.
+
 
 
 def render():
