@@ -146,8 +146,7 @@ def process_input():
     # Get a dictionary of all user inputs.
     user_inputs = pygame.key.get_pressed()
 
-    #calls to pygame.get
-    pygame.event.get(user_inputs)
+
 
     # Use the dictionary of user inputs, to update the player positions.
 
