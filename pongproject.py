@@ -41,8 +41,8 @@ right_scorerange = (800,600)
 # X_cord = ball[0]
 # Y_cord = ball[1]
 # ball_start = ball
-ball_directionx = 2
-ball_directiony = 2
+ball_directionx = 4
+ball_directiony = 4
 
 
 
